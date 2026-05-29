@@ -1,68 +1,74 @@
 <template>
   <el-scrollbar class="scroll">
     <div>
-      <div class="title" >
-        <Icon icon="mdi:email-outline" width="24" height="24" />
-        <div>{{settingStore.settings.title}}</div>
+      <!-- GOPK Mail Logo / Title -->
+      <div class="title">
+        <div class="logo-mark">
+          <Icon icon="mdi:email-outline" width="18" height="18" />
+        </div>
+        <div class="title-text">GOPK Mail</div>
       </div>
-      <el-menu :collapse="false" text-color="#fff" active-text-color="#fff" style="margin-top: 10px">
+
+      <el-menu :collapse="false" style="margin-top: 8px">
         <el-menu-item @click="router.push({name: 'email'})" index="email"
                       :class="route.meta.name === 'email' ? 'choose-item' : ''">
-          <Icon icon="hugeicons:mailbox-01" width="20" height="20" />
-          <span class="menu-name" style="margin-left: 21px">{{$t('inbox')}}</span>
+          <Icon icon="hugeicons:mailbox-01" width="18" height="18" />
+          <span class="menu-name">{{$t('inbox')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'send'})" index="send" v-perm="'email:send'"
                       :class="route.meta.name === 'send' ? 'choose-item' : ''">
-          <Icon icon="cil:send" width="20" height="20" />
-          <span class="menu-name" style="margin-left: 21px">{{$t('sent')}}</span>
+          <Icon icon="cil:send" width="18" height="18" />
+          <span class="menu-name">{{$t('sent')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'draft'})" index="draft" v-perm="'email:send'"
                       :class="route.meta.name === 'draft' ? 'choose-item' : ''">
-          <Icon icon="ep:document" width="19" height="19" />
-          <span class="menu-name" style="margin-left: 22px">{{$t('drafts')}}</span>
+          <Icon icon="ep:document" width="18" height="18" />
+          <span class="menu-name">{{$t('drafts')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'star'})" index="star"
                       :class="route.meta.name === 'star' ? 'choose-item' : ''">
-          <Icon icon="solar:star-line-duotone" width="20" height="20" />
-          <span class="menu-name" style="margin-left: 21px">{{$t('starred')}}</span>
+          <Icon icon="solar:star-line-duotone" width="18" height="18" />
+          <span class="menu-name">{{$t('starred')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'setting'})" index="setting"
                       :class="route.meta.name === 'setting' ? 'choose-item' : ''">
-          <Icon icon="fluent:settings-48-regular" width="20" height="20" />
-          <span class="menu-name" style="margin-left: 21px">{{$t('settings')}}</span>
+          <Icon icon="fluent:settings-48-regular" width="18" height="18" />
+          <span class="menu-name">{{$t('settings')}}</span>
         </el-menu-item>
+
+        <!-- Manage section -->
         <div class="manage-title" v-perm="['all-email:query','user:query','role:query','setting:query','analysis:query','reg-key:query']">
-          <div>{{$t('manage')}}</div>
+          <span>{{$t('manage')}}</span>
         </div>
         <el-menu-item @click="router.push({name: 'analysis'})" index="analysis" v-perm="'analysis:query'"
                       :class="route.meta.name === 'analysis' ? 'choose-item' : ''">
-          <Icon icon="fluent:data-pie-20-regular" width="24" height="24" />
-          <span class="menu-name" style="margin-left: 18px">{{$t('analytics')}}</span>
+          <Icon icon="fluent:data-pie-20-regular" width="18" height="18" />
+          <span class="menu-name">{{$t('analytics')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'user'})" index="setting" v-perm="'user:query'"
                       :class="route.meta.name === 'user' ? 'choose-item' : ''">
-          <Icon icon="si:user-alt-2-line" width="20" height="20" />
-          <span class="menu-name" style="margin-left: 21px">{{$t('allUsers')}}</span>
+          <Icon icon="si:user-alt-2-line" width="18" height="18" />
+          <span class="menu-name">{{$t('allUsers')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'all-email'})" index="all-email" v-perm="'all-email:query'"
                       :class="route.meta.name === 'all-email' ? 'choose-item' : ''">
-          <Icon icon="fluent:mail-list-28-regular" width="22" height="22" />
-          <span class="menu-name" style="margin-left: 20px">{{$t('allMail')}}</span>
+          <Icon icon="fluent:mail-list-28-regular" width="18" height="18" />
+          <span class="menu-name">{{$t('allMail')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'role'})" index="setting" v-perm="'role:query'"
                       :class="route.meta.name === 'role' ? 'choose-item' : ''">
-          <Icon icon="fluent:lock-closed-16-regular" width="22" height="22" />
-          <span class="menu-name" style="margin-left: 20px">{{$t('permissions')}}</span>
+          <Icon icon="fluent:lock-closed-16-regular" width="18" height="18" />
+          <span class="menu-name">{{$t('permissions')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'reg-key'})" index="reg-key" v-perm="'reg-key:query'"
                       :class="route.meta.name === 'reg-key' ? 'choose-item' : ''">
-          <Icon icon="fluent:fingerprint-20-filled" width="22" height="22" />
-          <span class="menu-name" style="margin-left: 20px">{{$t('inviteCode')}}</span>
+          <Icon icon="fluent:fingerprint-20-filled" width="18" height="18" />
+          <span class="menu-name">{{$t('inviteCode')}}</span>
         </el-menu-item>
         <el-menu-item @click="router.push({name: 'sys-setting'})" index="sys-setting" v-perm="'setting:query'"
                       :class="route.meta.name === 'sys-setting' ? 'choose-item' : ''">
-          <Icon icon="eos-icons:system-ok-outlined" width="18" height="18" style="margin-left: 2px" />
-          <span class="menu-name" style="margin-left: 22px">{{$t('SystemSettings')}}</span>
+          <Icon icon="eos-icons:system-ok-outlined" width="18" height="18" />
+          <span class="menu-name">{{$t('SystemSettings')}}</span>
         </el-menu-item>
       </el-menu>
     </div>
@@ -77,103 +83,160 @@ import {useSettingStore} from "@/store/setting.js";
 
 const settingStore = useSettingStore();
 const route = useRoute();
-
 </script>
 
 <style lang="scss" scoped>
 
+/* ── Claude-style palette variables ── */
+/* Light: warm parchment / linen background */
+/* Dark: deep charcoal with warm undertones */
+$aside-bg-light: #F5F0E8;
+$aside-bg-dark: #1E1D1B;
+$terracotta: #D97757;
+$terracotta-hover: #C96A45;
+$text-light: #2D2A26;
+$text-muted-light: #7A7570;
+$text-dark: #EDE8DF;
+$text-muted-dark: #8A8580;
+
+.scroll {
+  height: 100%;
+}
+
+:deep(.el-scrollbar__wrap--hidden-default) {
+  background: $aside-bg-light !important;
+}
+
+:deep(.el-menu) {
+  background: transparent;
+  border-right: none;
+}
+
+:deep(.el-menu-item) {
+  background: transparent;
+  color: $text-light;
+}
+
+/* Dark mode overrides via CSS vars */
+.dark :deep(.el-scrollbar__wrap--hidden-default) {
+  background: $aside-bg-dark !important;
+}
+
+.dark :deep(.el-menu-item) {
+  color: $text-dark;
+}
+
+/* ── Title / Logo ── */
 .title {
-  margin: 15px 10px;
-  height: 45px;
-  border-radius: 6px;
+  margin: 16px 12px 4px;
+  height: 48px;
+  border-radius: 10px;
   display: flex;
-  position: relative;
-  font-size: 16px;
-  font-weight: bold;
   align-items: center;
-  justify-content: center;
-  gap: 5px;
-  color: #ffffff;
-  background: linear-gradient(135deg, #1890ff, #3a80dd);
-  transition: all 0.3s ease;
-  max-width: 240px;
-  padding: 0 10px;
-  > div {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: calc(240px - 20px - 30px);
-  }
+  gap: 10px;
+  padding: 0 14px;
+  background: linear-gradient(135deg, $terracotta 0%, $terracotta-hover 100%);
+  box-shadow: 0 2px 12px rgba(217, 119, 87, 0.28);
+  max-width: 236px;
+  transition: box-shadow 0.2s ease;
 
-  :deep(.el-icon) {
-    flex-shrink: 0;
-    font-size: 20px;
+  &:hover {
+    box-shadow: 0 4px 16px rgba(217, 119, 87, 0.38);
   }
-
-  .user-right-icon {
-    align-self: center;
-    position: absolute;
-    font-size: 12px;
-    right: 8px;
-    color: #ffffff;
-  }
-
 }
 
+.logo-mark {
+  color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
 
+.title-text {
+  font-family: 'Newsreader', 'Georgia', serif;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+/* ── Section divider ── */
 .manage-title {
-  margin-top: 10px;
-  padding-left: 20px;
-  color: #fff;
+  margin: 18px 0 6px;
+  padding: 0 22px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $text-muted-light;
+  user-select: none;
 }
 
+/* ── Menu items ── */
 .el-menu-item {
-  margin: 5px 10px !important;
-  border-radius: 6px;
-  height: 36px;
-  padding: 10px !important;
-}
-
-.choose-item {
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.08) !important;
-  backdrop-filter: blur(4px);
-}
-
-@media (hover: hover) {
-  .el-menu-item:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-  }
+  margin: 2px 10px !important;
+  border-radius: 8px !important;
+  height: 36px !important;
+  padding: 0 12px !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 450;
+  color: $text-light;
+  transition: background 0.15s ease, color 0.15s ease !important;
 }
 
 .menu-name {
   user-select: none;
+  margin-left: 0 !important;
 }
 
+/* Active item */
+.choose-item {
+  background: rgba(217, 119, 87, 0.12) !important;
+  color: $terracotta !important;
+  font-weight: 550 !important;
 
-:deep(.el-scrollbar__wrap--hidden-default ) {
-  background: var(--aside-backgound) !important;
+  .menu-name {
+    color: $terracotta;
+  }
 }
 
-:deep(.el-menu-item) {
-  background: var(--aside-backgound);
+/* Hover */
+@media (hover: hover) {
+  .el-menu-item:not(.choose-item):hover {
+    background: rgba(45, 42, 38, 0.06) !important;
+    color: $text-light !important;
+  }
 }
 
-:deep(.el-menu) {
-  background: var(--aside-backgound);
+/* ── Dark mode ── */
+:deep(.dark) {
+  .el-scrollbar__wrap--hidden-default {
+    background: $aside-bg-dark !important;
+  }
+  .el-menu-item {
+    color: $text-dark;
+  }
+  .manage-title {
+    color: $text-muted-dark;
+  }
+}
+
+/* Use CSS var fallback for dark mode since scoped can't reach html.dark easily */
+/* We rely on the parent providing --aside-background override */
+:deep(.el-scrollbar__wrap--hidden-default) {
+  background: var(--aside-background, $aside-bg-light) !important;
 }
 
 .el-menu {
   border-right: 0;
   width: 260px;
-}
-
-:deep(.el-divider__text) {
-  background: var(--aside-backgound);
-  color: #FFFFFF;
-}
-
-.scroll {
-
+  background: transparent !important;
 }
 </style>
