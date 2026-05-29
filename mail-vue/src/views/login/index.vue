@@ -422,7 +422,7 @@ function refreshWebsiteConfig() {
     if (!suffix.value && setting.domainList.length > 0) {
       suffix.value = setting.domainList[0]
     }
-    document.title = setting.title
+    document.title = "GOPK Mail"
   }).catch(e => {
     console.error(e)
   })
